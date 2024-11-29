@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Apply bg-slate-300 to a specific selector */
+  body {
+    @apply bg-slate-100;
+  }
+}

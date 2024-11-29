@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  uid          String        @id @unique @default(uuid())
+  categoryName String @unique
+  expenseItems Expenseitem[]
+}
+
+model Expenseitem {
+  uid        String   @id @unique @default(uuid())
+  title      String
+  amount     Float
+  category   Category @relation(fields: [category_name], references: [categoryName])
+  category_name String
+}
+
+model Budget {
+  uid String @id @unique @default(uuid())
+  budget Int
+}
